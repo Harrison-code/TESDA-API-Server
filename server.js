@@ -23,6 +23,13 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
+// TODO Set up JWT authentication middleware
+app.use(async (req, res, next) => {
+	const token = req.headers['authorization'];
+	console.log({token})
+	next();
+
+})
 const server = new ApolloServer({
 	typeDefs: schema,
 	resolvers,
