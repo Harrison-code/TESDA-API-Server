@@ -1,9 +1,14 @@
-
-import {findAllCompanys, findAllEmployees, findAllTrainee, findByCompanyId, findByTraineeId} from "./resolvers/queries/queries";
+import {
+	findAllCompanys,
+	findAllEmployees,
+	findAllTrainee,
+	findByCompanyId,
+	findByTraineeId
+} from "./resolvers/queries/queries";
 import {employeeRelationship} from "./resolvers/relationships/employee_relationship";
 import {companyRelationship} from "./resolvers/relationships/company_relationship";
 import {traineeRelationship} from "./resolvers/relationships/trainee_relationship";
-import {createTrainee} from "./resolvers/mutations";
+import {createTrainee, signInTrainee} from "./resolvers/mutations";
 
 const jwt = require('jsonwebtoken')
 
@@ -26,14 +31,19 @@ export const resolvers = {
 		},
 		trainees: async () => {
 			return await findAllTrainee();
-        },
-        trainee: async (root, args) => {
-            return await findByTraineeId(args.id);
-        },
+		},
+		trainee: async (root, args) => {
+			return await findByTraineeId(args.id);
+		},
 	},
 	Mutation: {
 		signupTrainee: async (root, args) => {
 			const trainee = await createTrainee(args);
+			const token = await createToken(trainee, "TESDASECRET", '1hr');
+			return {token}
+		},
+		signinTrainee: async (root, args) => {
+			const trainee = await signInTrainee(args);
 			const token = await createToken(trainee, "TESDASECRET", '1hr');
 			return {token}
 		}

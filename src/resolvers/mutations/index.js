@@ -23,3 +23,21 @@ export const createTrainee = async (args) => {
 	const newTrainee = await TraineeModel.create(data, {fields});
 	return newTrainee.dataValues
 }
+
+
+export const signInTrainee = async (args) => {
+	const {email, password} = args;
+
+	const trainee = await TraineeModel.findOne({
+		where: {
+			email,
+			password
+		}
+	});
+
+	if (!trainee) {
+		throw new Error("Invalid username or password!");
+	}
+
+	return trainee
+}

@@ -12,6 +12,7 @@ export const schema = gql`
   
   type Mutation{
     signupTrainee(email: String!, password: String!, firstname: String!, lastname: String!): Token
+    signinTrainee(email: String!, password: String!): Token
   }
 
   type Employee {
