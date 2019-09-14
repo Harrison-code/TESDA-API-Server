@@ -1,15 +1,17 @@
-
-import { gql } from 'apollo-server-express';
+import {gql} from 'apollo-server-express';
 
 
 export const schema = gql`
   type Query {
     employees: [Employee]
-    
     companys: [Company]
     trainees: [Trainee]
     company(id: ID!): Company
     trainee(id: ID!): Trainee
+  }
+  
+  type Mutation{
+    signupTrainee(email: String!, password: String!, firstname: String!, lastname: String!): Token
   }
 
   type Employee {
@@ -45,4 +47,9 @@ export const schema = gql`
     updatedAt: String
     trainees: [Trainee]
   }
+  
+  type Token {
+    token: String
+  }
+  
 `;
