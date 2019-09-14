@@ -9,7 +9,7 @@ dotenvConfig.config();
 
 testConnection()
 
-const port = process.env.NODE_PORT
+const port = 9000
 
 console.log(port)
 
@@ -23,5 +23,5 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app, path: '/graphql' });
 app.listen({ port }, () => {
-    console.log(`Apollo Server on http://localhost:${port}/graphql`);
+    console.log('Apollo Server on http://localhost:9000/graphql');
 });

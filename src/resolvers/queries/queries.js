@@ -1,5 +1,6 @@
 import { EmployeeModel } from '../../models/EmployeeModel'
 import { CompanyModel } from '../../models/CompanyModel'
+import { TraineeModel } from '../../models/TraineeModel'
 
 export const findAllEmployees = async () => {
     // Find all employees
@@ -11,6 +12,12 @@ export const findAllCompanys = async () => {
     // Find all employees
     const company = await CompanyModel.findAll({ raw: true });
     return company
+}
+
+export const findAllTrainee = async () => {
+    // Find all employees
+    const trainee = await TraineeModel.findAll({ raw: true });
+    return trainee
 }
 
 export const findByCompanyId = async (id) => {
