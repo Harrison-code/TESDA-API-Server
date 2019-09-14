@@ -20,6 +20,13 @@ export const findAllTrainee = async () => {
     return trainee
 }
 
+export const findByTraineeId = async (id) => {
+    // Find all trainee
+    const trainee = await TraineeModel.findByPk(id,{ raw: true });
+    return trainee
+}
+
+
 export const findByCompanyId = async (id) => {
     // Find all employees
     const company = await CompanyModel.findByPk(id,{ raw: true });

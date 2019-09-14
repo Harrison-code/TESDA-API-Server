@@ -9,6 +9,7 @@ export const schema = gql`
     companys: [Company]
     trainees: [Trainee]
     company(id: ID!): Company
+    trainee(id: ID!): Trainee
   }
 
   type Employee {

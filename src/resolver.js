@@ -1,4 +1,4 @@
-import { findAllEmployees, findAllCompanys, findByCompanyId, findAllTrainee } from "./resolvers/queries/queries";
+import { findAllEmployees, findAllCompanys, findByCompanyId, findAllTrainee, findByTraineeId  } from "./resolvers/queries/queries";
 import { employeeRelationship } from "./resolvers/relationships/employee_relationship";
 import { companyRelationship } from "./resolvers/relationships/company_relationship";
 import { traineeRelationship } from "./resolvers/relationships/trainee_relationship";
@@ -17,6 +17,9 @@ export const resolvers = {
         },
         trainees: async () => {
             return await findAllTrainee();
+        },
+        trainee: async (root, args) => {
+            return await findByTraineeId(args.id);
         },
     },
     Employee: employeeRelationship(),
